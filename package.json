@@ -2,7 +2,7 @@
   "author": "Mark Hughes <m@rkhugh.es>",
   "name": "ah-middleware",
   "description": "A neater way to create middleware for acrionhero.js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "homepage": "https://github.com/MarkehMe/ah-middleware",
   "repository": {
