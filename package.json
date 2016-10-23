@@ -1,0 +1,19 @@
+{
+  "author": "Mark Hughes <m@rkhugh.es>",
+  "name": "ah-middleware",
+  "description": "A neater way to create middleware for acrionhero.js",
+  "version": "1.0.0",
+  "homepage": "https://github.com/MarkehMe/ah-middleware",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/MarkehMe/ah-middleware.git"
+  },
+  "keywords": ["actionherojs", "actionhero", "api", "middleware"],
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "optionalDependencies": {},
+
+}
