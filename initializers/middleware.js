@@ -1,14 +1,16 @@
 const fs = require('fs');
 
 module.exports = {
-  initialize: function(api, next){
+  initialize: function(api, next) {
     api.middleware = [];
-    
-    fs.readdir('middleware', (err, files) => {
-      console.log(files);
 
+    if ( ! fs.existsSync('middleware')) {
+      fs.mkdirSync(dir);
+    }
+
+    fs.readdir('middleware', (err, files) => {
       files.forEach(file => {
-        var middleware = require("../middleware/" + file)(api);
+        var middleware = require('../middleware/' + file)(api);
 
         api.middleware.push(middleware);
         api.actions.addMiddleware(middleware);
