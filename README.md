@@ -1,5 +1,5 @@
 # ActionHero Middleware
-A simple plugin for neater ActionHero middleware
+A neater way to create middleware for actionhero.js
 
 ## Installation
 
