@@ -5,16 +5,27 @@ module.exports = {
   initialize: function(api, next) {
     api.middleware = [];
 
-    if ( ! fs.existsSync(api.projectRoot + path.sep + 'middleware')) {
-      fs.mkdirSync(api.projectRoot + path.sep + 'middleware');
+    var middlewareDir = api.projectRoot + path.sep + 'middleware';
+
+    if ( ! fs.existsSync(middlewareDir)) {
+      fs.mkdirSync(middlewareDir);
     }
 
-    fs.readdir(api.projectRoot + path.sep + 'middleware', (err, files) => {
+    fs.readdir(middlewareDir, (err, files) => {
       files.forEach(file => {
-        var middleware = require(api.projectRoot + path.sep + 'middleware' + path.sep + file)(api);
+        try {
+          var currentMiddlewarePath = middlewareDir + path.sep + file;
 
-        api.middleware.push(middleware);
-        api.actions.addMiddleware(middleware);
+          var middleware = require(currentMiddlewarePath)(api);
+
+          api.middleware.push(middleware);
+          api.actions.addMiddleware(middleware);
+        } catch(e) {
+          var error = new Error('Failed to add middleware ' + file + '.  ' + e.message);
+
+          next(error);
+          return;
+        }
       });
     });
 
